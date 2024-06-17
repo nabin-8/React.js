@@ -1,101 +1,86 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React Element
+/**
+- Header
+  - Logo
+  - Nav Items
 
-const heading =React.createElement(
-    "h1",
-     {id:"heading"},
-      "Namesta React"
-);
+- Body
+  - Search
+  - ResturentContainer
+    - ResturentCard
+        - Imd
+        - Name of Res, Star rating, cuisine, delivery time
+- Footer
+  - Copyright
+  - Links
+  - Address
+  - Contact
+ */
 
-// React.createElement is an object
-// When we render to the dom then it becomes a html element
-
-const root=ReactDOM.createRoot(document.getElementById("root"));
-
-console.log(heading);
-root.render(heading);
-
-// To solve this react developers create JSX
-// JSX(Javascript Syntax)
-
-// Create h1 using jsx
-const jsxHeding=(<h1 className="hiJSX" >
-    React Using JSX
-    </h1>);
-console.log(jsxHeding);
-root.render(jsxHeding);
-
-// JSX - HTML-Like or XML-like syntax
-
-// The jsx syntax is not understand by browser then how it is render?
-// JSX (transpiled before it reaches the JS) - PARCLE - Bable
-// Bable is transpiled for Translating the code of jsx
-
-
-// React Component
-// There are two type of components
-// 1.Class-Based Component (OLD)
-// 2.Functional-Based Component (NEW)
-
-
-// 2.Functional-Based Component (NEW)
-// => React Functional-Based Component is just a javascript function.
-// If a function returning react element it becomes react functional component.
-// If a function returning jsx component it is react functional component.
-
-
-const HedingComponent=()=>{
+const Header=()=>{
     return(
-        <h1>Namesta React Functional Component</h1>
-    );
-}
-// this also valid functional component
-
-const HedingComponent2=()=> {
-
-    return<h1>Hello React</h1>
-};
-const HedingComponent3=()=> <h1>Hello React</h1>;
-// react element
-const ReactElement=()=>(
-    <div>
-        <h1>{100+200}</h1>
-    </div>
-)
-
-const HedingComponent4=()=> {
-    
-    return(
-        <div>
-        <HedingComponent/>
-        <h1>Hello React</h1>
-            {ReactElement}
-    </div>
+        <div className="header">
+            <div className="Logo-container">
+                <img 
+                className="logo"
+                src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png?nwm=1&nws=1&industry=fast-food&txt_keyword=All" 
+                />
+            </div>
+            <div className="nav-items" >
+                <ul >
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
     )
-};
-
-// React Element
-const heading2=(
-    <div>
-        <h1>Hello React</h1>
-    </div>
-)
-// to render react functional component we use this syntax
-root.render(<HedingComponent4/>);
-// root.render(HedingComponent4());
-
-// bebel understand this syntax for functional component
-// <HedingComponent/>
+}
 
 
+const ResturentCard=(props)=>{
+    return(
+        <div className="res-card">
+            <img 
+            className="res-logo"
+            alt="res-logo"
+            src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/mocil3npmwpcdcfaxql1" />
+            <h3>{props.resName}</h3>
+            <h4>{props.cuisine}</h4>
+            <span className="ratingStar" >4.4 stars</span>
+            <span className="timeCook" >38 minutes</span>
+        </div>
+    )
+}
 
-// jsx is also prevent sanitizing attack
+const Body=()=>{
+    return(
+        <div className="body">
+            <div className="Search">Search</div>
+            <div className="res-container">
+                <ResturentCard resName="Meghana Foods" cuisine="Biryani, North Indian, Asian" />
+                <ResturentCard resName="KFC" cuisine="Chilly Chiken, North Indian, Asian"/>
+                <ResturentCard resName="KKFC"cuisine="Hot Soss, North Indian, Asian" />
+                <ResturentCard resName="Swigy" cuisine="Sukking, North Indian, Asian"/>
+                <ResturentCard resName="Zomatto" cuisine="Jolaradyan, North Indian, Asian" />
+                {/* restro container */}
+            </div>
+        </div>
+    )
+}
 
-// <HedingComponent4/>
-// and this
-// <HedingComponent4></HedingComponent4>
-// and this
-// HedingComponent4()
-// is same. because end of the day react is javascript
+const AppLayout=()=>{
+    return(
+        <div className="app">
+            <Header/>
+            <Body/>
+        </div>
+    )
+}
+
+const root=ReactDOM.createRoot(document.getElementById("root"))
+
+root.render(<AppLayout/>)
