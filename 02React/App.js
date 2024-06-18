@@ -41,7 +41,10 @@ const Header=()=>{
 }
 
 
+
+
 const ResturentCard=(props)=>{
+    // const {resName, cuisine}=props
     return(
         <div className="res-card">
             <img 
