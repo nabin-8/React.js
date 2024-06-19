@@ -2,11 +2,13 @@
     display: flex;
     justify-content: space-between;
     border: 1px solid;
+    padding: 12px;
     
 }
 
 .logo{
-    width: 200px;
+    width: 150px;
+    border-radius: 50%;
 }
 
 .nav-items {
@@ -28,7 +30,7 @@
     border-radius: 4px;
     padding: 8px;
     width: 200px;
-    height: 300px;
+    height: 340px;
     border: 1px solid #d1d5db;
     transition-duration: 100ms;
     background-color: #f3f4f6;
@@ -66,4 +68,19 @@
 
 .timeCook{
     color:#14532d  ;
+}
+
+
+.filter-but{
+    margin: 10px;
+    padding: 8px 12px;
+    background-color: #14532d;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.filter-but:hover{
+    cursor: pointer;
+    opacity: 0.9;
 }
