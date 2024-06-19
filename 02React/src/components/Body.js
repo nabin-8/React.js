@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ResturentCard from "./ResturentCard"
 
 const Body=()=>{
@@ -67,7 +67,19 @@ const listofData=[
     ];
 const [listOfResturents, setistOfResturents]=useState(listofData);
 
+useEffect(()=>{
+    fetchData()
+},[])
+const fetchData=async()=>{
+    const data=await fetch(
+        "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
+    );
 
+    const json=await data.json();
+    console.log(json);
+    console.log("hello");
+    // setistOfResturents();
+}
     return(
         <div className="body">
             <div className="Search">
